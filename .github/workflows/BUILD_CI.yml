@@ -1,0 +1,94 @@
+# This is a basic workflow to help you get started with Actions
+
+name: S905D_N1_BUILD_CI
+
+# Controls when the workflow will run
+on:
+  schedule:
+    - cron: '0 21 * * 5'
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+env:
+  TZ: 'Asia/Shanghai'
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Install depends
+        run: |
+          docker rmi `docker images -q`
+          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
+          sudo -E apt-get -qq update
+          sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
+          sudo -E apt-get -qq install btrfs-progs dosfstools uuid-runtime mount util-linux parted rename
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
+          sudo timedatectl set-timezone "$TZ"
+      - name: Clone immortalwrt's openwrt
+        run: |
+          git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
+      - name: Install feeds & Make config
+        env:
+          CONFIG: 'configs/arm64-immortal21.02-gateway-flowoffload-sfe.config'
+        run: |
+          cp $CONFIG immortalwrt/.config
+          cd immortalwrt
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
+
+          packages=" \
+          brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
+          kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs ntfs-3g \
+          kmod-usb2 kmod-usb3 kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
+          kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
+          blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip \
+          lscpu htop iperf3 curl lm-sensors python3 install-program
+          "
+          sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' \
+              target/linux/armvirt/Makefile
+          for x in $packages; do
+              sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
+          done
+          
+          make defconfig
+          cat .config
+
+      - name: Compile openwrt
+        run: |
+          cd immortalwrt
+          make download -j8
+          make -j$(nproc) || make -j1 V=s
+          rename 's/immortalwrt/openwrt/' immortalwrt/bin/targets/*/*/*.tar.gz
+
+      - name: Package Armvirt as OpenWrt
+        uses: unifreq/openwrt_packit@master
+        env:
+          OPENWRT_ARMVIRT: immortalwrt/bin/targets/*/*/*.tar.gz
+          PACKAGE_SOC: all
+          KERNEL_VERSION_NAME: 5.13.12_5.4.142
+
+      - name: Upload OpenWrt Firmware to Releases
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: openwrt_armvirt_${{ env.PACKAGED_OUTPUTDATE }}
+          files: ${{ env.PACKAGED_OUTPUTPATH }}/*
+          body: |
+            This is OpenWrt firmware for Armvirt 64
+            * Firmware information
+            Default IP: 192.168.1.1
+            Default username: root
+            Default password: password
