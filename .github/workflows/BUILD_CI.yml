@@ -62,7 +62,6 @@ jobs:
               sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
           done
           
-          make defconfig
           cat .config
 
       - name: Compile openwrt
@@ -70,7 +69,7 @@ jobs:
           cd immortalwrt
           make download -j8
           make -j$(nproc) || make -j1 V=s
-          rename 's/immortalwrt/openwrt/' immortalwrt/bin/targets/armvirt/64/*.tar.gz
+          rename 's/immortalwrt/openwrt/' bin/targets/armvirt/64/*.tar.gz
 
       - name: Package Armvirt as OpenWrt
         uses: unifreq/openwrt_packit@master
