@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: S905D_N1_BUILD_CI
+name: Build OpenWrt Firmware
 
 # Controls when the workflow will run
 on:
