@@ -20,7 +20,7 @@ env:
 
 jobs:
   build:
-    runs-on: docker://immortalwrt/opde:base
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout
@@ -31,11 +31,11 @@ jobs:
           docker rmi `docker images -q`
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
           sudo -E apt-get -qq update
+          curl -s https://build-scripts.project-openwrt.eu.org/init_build_environment.sh | sudo bash
           sudo -E apt-get -qq install btrfs-progs dosfstools uuid-runtime mount util-linux parted rename
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "$TZ"
-    
       - name: Clone immortalwrt's openwrt
         run: |
           git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
