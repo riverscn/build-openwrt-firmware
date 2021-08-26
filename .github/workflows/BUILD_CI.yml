@@ -43,7 +43,6 @@ jobs:
         env:
           CONFIG: 'configs/arm64-immortalwrt.sh'
           COMMON: 'configs/custom.seed'
-          CONFIG_FILE: 'immortalwrt/.config'
         run: |
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
@@ -51,7 +50,7 @@ jobs:
           cd immortalwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          cat $COMMON >> $CONFIG_FILE
+          cat $COMMON >> .config
           make defconfig
           cat .config
 
@@ -75,7 +74,6 @@ jobs:
         env:
           CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
           COMMON: 'configs/custom.seed'
-          CONFIG_FILE: 'immortalwrt/.config'
         run: |
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
@@ -83,7 +81,7 @@ jobs:
           cd immortalwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
-          cat $COMMON >> $CONFIG_FILE
+          cat $COMMON >> .config
           make defconfig
           cat .config
 
