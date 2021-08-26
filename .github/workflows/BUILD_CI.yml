@@ -62,6 +62,12 @@ jobs:
               sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
           done
           
+          sed -i "/luci-app-vlmcsd/d" include/target.mk
+          sed -i "/luci-app-ssr-plus/d" include/target.mk
+          sed -i "/luci-app-arpbind/d" include/target.mk
+          sed -i "/ddns-scripts_aliyun/a\  ddns-scripts-cloudflare \\\\" include/target.mk
+          sed -i "/DEFAULT_PACKAGES.tweak:=\\\\/a\  kmod-ipt-offload \\\\" include/target.mk
+          sed -i "/DEFAULT_PACKAGES.tweak:=\\\\/a\  kmod-nft-offload \\\\" include/target.mk
           make defconfig
           cat .config
 
