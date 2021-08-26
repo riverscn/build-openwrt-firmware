@@ -1,5 +1,5 @@
 # Openwrt sbcbox firmware
-Actions for build bypass-gateway openwrt router box.
+Actions for build openwrt router box.
 
 # Features
 
