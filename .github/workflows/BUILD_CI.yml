@@ -39,21 +39,21 @@ jobs:
         run: |
           git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
       
-      - name: Install Feeds & Make Config - aarch64_cortex-a53
+      - name: Install Feeds & Make Config - armvirt64_cortex-a53
         env:
           CONFIG: 'configs/arm64-immortalwrt.sh'
         run: |
           chmod +x $CONFIG
           ./$CONFIG
 
-      - name: Compile Openwrt - aarch64_cortex-a53
+      - name: Compile Openwrt - armvirt64_cortex-a53
         run: |
           cd immortalwrt
           make download -j8
           make -j$(nproc) || make -j1 V=s
           rename 's/immortalwrt/openwrt/' bin/targets/armvirt/64/*.tar.gz
 
-      - name: Package Sbcbox Firmware - aarch64_cortex-a53
+      - name: Package Sbcbox Firmware - armvirt64_cortex-a53
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: immortalwrt/bin/targets/armvirt/64/*.tar.gz
@@ -62,14 +62,14 @@ jobs:
           OPENWRT_VER: Immortal21.02
           WHOAMI: river
 
-      - name: Install Feeds & Make Config - bcm2711-raspi4
+      - name: Install Feeds & Make Config - bcm2711-raspi4_cortex-a72
         env:
           CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
         run: |
           chmod +x $CONFIG
           ./$CONFIG
 
-      - name: Compile Openwrt - bcm2711-raspi4
+      - name: Compile Openwrt - bcm2711-raspi4_cortex-a72
         run: |
           cd immortalwrt
           make download -j8
