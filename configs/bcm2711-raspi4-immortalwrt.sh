@@ -18,6 +18,9 @@ CONFIG_PACKAGE_luci-app-udpxy=y
 CONFIG_PACKAGE_ipv6helper=y
 CONFIG_PACKAGE_luci-app-upnp=y
 
+## scripts
+CONFIG_PACKAGE_ddns-scripts-cloudflare=y
+
 ## luci theme
 CONFIG_PACKAGE_luci-theme-argon=y
 
