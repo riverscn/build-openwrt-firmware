@@ -68,11 +68,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: openwrt_armvirt_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: openwrt-sbcbox-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: ${{ env.PACKAGED_OUTPUTPATH }}/*
-          body: |
-            This is OpenWrt firmware for Armvirt 64
-            * Firmware information
-            Default IP: 192.168.1.1
-            Default username: root
-            Default password: password
+          body_path: ${{ github.workspace }}-configs/arm64-immortalwrt.txt
