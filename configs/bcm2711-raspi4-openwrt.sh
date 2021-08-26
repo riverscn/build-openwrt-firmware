@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd immortalwrt
+cd openwrt
 
 cat >.config <<-EOF
 ## target
