@@ -40,7 +40,7 @@ jobs:
         run: |
           git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
       
-      - name: Install feeds & make config:: aarch64_cortex-a53
+      - name: Install feeds & make config - aarch64_cortex-a53
         env:
           CONFIG: 'configs/arm64-immortalwrt.sh'
         run: |
