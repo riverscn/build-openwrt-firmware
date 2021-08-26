@@ -62,6 +62,7 @@ jobs:
               sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
           done
           
+          make defconfig
           cat .config
 
       - name: Compile openwrt
