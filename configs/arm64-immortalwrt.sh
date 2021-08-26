@@ -25,27 +25,6 @@ CONFIG_TARGET_armvirt=y
 CONFIG_TARGET_armvirt_64=y
 CONFIG_TARGET_armvirt_64_Default=y
 
-## luci app
-CONFIG_PACKAGE_luci-app-argon-config=y
-CONFIG_PACKAGE_luci-app-passwall=y
-CONFIG_PACKAGE_luci-app-udpxy=y
-CONFIG_PACKAGE_ipv6helper=y
-CONFIG_PACKAGE_luci-app-upnp=y
-
-## scripts
-CONFIG_PACKAGE_ddns-scripts-cloudflare=y
-
-## luci theme
-CONFIG_PACKAGE_luci-theme-argon=y
-
-## remove
-# CONFIG_PACKAGE_luci-app-webadmin is not set
-# CONFIG_PACKAGE_luci-app-vlmcsd is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus is not set
-
-## others
-CONFIG_BRCMFMAC_SDIO=y
-CONFIG_LUCI_LANG_en=y
 EOF
 
 make defconfig

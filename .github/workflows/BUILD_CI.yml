@@ -42,9 +42,13 @@ jobs:
       - name: Install Feeds & Make Config - armvirt64_cortex-a53
         env:
           CONFIG: 'configs/arm64-immortalwrt.sh'
+          COMMON: 'configs/custom.seed'
+          CONFIG_FILE: 'immortalwrt/.config'
         run: |
+          rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
+          cat $COMMON>$CONFIG_FILE
 
       - name: Compile Openwrt - armvirt64_cortex-a53
         run: |
@@ -65,9 +69,13 @@ jobs:
       - name: Install Feeds & Make Config - bcm2711-raspi4_cortex-a72
         env:
           CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
+          COMMON: 'configs/custom.seed'
+          CONFIG_FILE: 'immortalwrt/.config'
         run: |
+          rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
+          cat $COMMON>$CONFIG_FILE
 
       - name: Compile Openwrt - bcm2711-raspi4_cortex-a72
         run: |
