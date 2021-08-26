@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd immortalwrt
+cd openwrt
 
 packages=" \
 brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
