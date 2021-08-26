@@ -47,7 +47,7 @@ jobs:
           chmod +x $CONFIG
           ./$CONFIG
 
-      - name: Compile openwrt:: aarch64_cortex-a53
+      - name: Compile openwrt - aarch64_cortex-a53
         run: |
           cd immortalwrt
           make download -j8
@@ -63,14 +63,14 @@ jobs:
           OPENWRT_VER: Immortal21.02
           WHOAMI: river
 
-      - name: Install feeds & make config:: bcm2711-raspi4
+      - name: Install feeds & make config - bcm2711-raspi4
         env:
           CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
         run: |
           chmod +x $CONFIG
           ./$CONFIG
 
-      - name: Compile openwrt:: bcm2711-raspi4
+      - name: Compile openwrt - bcm2711-raspi4
         run: |
           cd immortalwrt
           make download -j8
