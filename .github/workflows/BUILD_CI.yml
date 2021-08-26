@@ -94,4 +94,4 @@ jobs:
           files: |
             ${{ env.PACKAGED_OUTPUTPATH }}/*
             immortalwrt/bin/targets/bcm27xx/bcm2711/*squashfs*.img.gz
-          body_path: ${{ github.workspace }}-configs/arm64-immortalwrt.txt
+          body_path: configs/release_note.txt
