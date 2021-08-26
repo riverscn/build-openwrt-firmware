@@ -28,8 +28,7 @@ FETCH_OPENWRT_SCRIPT="fetch_openwrt.sh"
 
 # Pack Other SBC Boxes' firmware
 (
-    git clone https://github.com/unifreq/openwrt_packit.git || cd openwrt_packit && git stash && git pull && cd ..
-    cd openwrt_packit
+    git clone https://github.com/unifreq/openwrt_packit.git && cd openwrt_packit || cd openwrt_packit && git stash && git pull
 
     OPENWRT_ARMVIRT="../openwrt/bin/targets/armvirt/64/*.tar.gz"
     PACKAGE_SOC="all"
