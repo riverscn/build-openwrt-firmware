@@ -40,21 +40,21 @@ jobs:
         run: |
           git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
       
-      - name: Install feeds & Make config
+      - name: Install feeds & make config:: aarch64_cortex-a53
         env:
           CONFIG: 'configs/arm64-immortalwrt.sh'
         run: |
           chmod +x $CONFIG
           ./$CONFIG
 
-      - name: Compile openwrt
+      - name: Compile openwrt:: aarch64_cortex-a53
         run: |
           cd immortalwrt
           make download -j8
           make -j$(nproc) || make -j1 V=s
           rename 's/immortalwrt/openwrt/' bin/targets/armvirt/64/*.tar.gz
 
-      - name: Package Armvirt as OpenWrt
+      - name: Package armvirt as sbcbox firmware:: aarch64_cortex-a53
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: immortalwrt/bin/targets/armvirt/64/*.tar.gz
@@ -63,11 +63,28 @@ jobs:
           OPENWRT_VER: Immortal21.02
           WHOAMI: river
 
+      - name: Install feeds & make config:: bcm2711-raspi4
+        env:
+          CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
+        run: |
+          chmod +x $CONFIG
+          ./$CONFIG
+
+      - name: Compile openwrt:: bcm2711-raspi4
+        run: |
+          cd immortalwrt
+          make download -j8
+          make -j$(nproc) || make -j1 V=s
+          rename 's/immortalwrt/openwrt/' bin/targets/bcm27xx/bcm2711/*.tar.gz
+
+
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: openwrt-sbcbox-firmware_${{ env.PACKAGED_OUTPUTDATE }}
-          files: ${{ env.PACKAGED_OUTPUTPATH }}/*
-          body_path: ${{ github.workspace }}-configs/arm64-immortalwrt.txt
+          files: |
+            ${{ env.PACKAGED_OUTPUTPATH }}/*
+            immortalwrt/bin/targets/bcm27xx/bcm2711/*squashfs*.img.gz
+body_path: ${{ github.workspace }}-configs/arm64-immortalwrt.txt
