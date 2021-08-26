@@ -1,13 +1,19 @@
 #!/bin/bash
 
-cd openwrt_packit
+cd openwrt
+rename -f 's/immortalwrt/openwrt/' bin/targets/*/*/*.img.gz
+rename -f "s/sysupgrade/${OPENWRT_VER}/" bin/targets/*/*/*.img.gz
+rm bin/targets/*/*/*factory.img.gz
+cd..
 
-OPENWRT_ARMVIRT="openwrt/bin/targets/armvirt/64/*.tar.gz"
+OPENWRT_ARMVIRT="$(pwd)/openwrt/bin/targets/armvirt/64/*.tar.gz"
 PACKAGE_SOC="all"
 KERNEL_VERSION_NAME="5.4.142"
 OPENWRT_VER="Immortal21.02"
 WHOAMI="river"
 
-source openwrt_flippy.sh
+git clone https://github.com/unifreq/openwrt_packit.git || cd openwrt_packit && git stash && git pull && cd ..
 
-./mk_s905d_n1.sh
+cd openwrt_packit
+
+source openwrt_flippy.sh

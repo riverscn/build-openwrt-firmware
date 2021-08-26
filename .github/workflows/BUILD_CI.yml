@@ -39,20 +39,11 @@ jobs:
         run: |
           . fetch_openwrt.sh
       
-      - name: Install Feeds & Make Config - armvirt64_cortex-a53
-        env:
-          CONFIG: 'configs/arm64-openwrt.sh'
+      - name: Compile Openwrt
         run: |
-          bash update_config.sh $CONFIG
+          . compile_openwrt.sh
 
-      - name: Compile Openwrt - armvirt64_cortex-a53
-        run: |
-          cd openwrt
-          make download -j8
-          make -j$(nproc) || make -j1 V=s
-          rename 's/immortalwrt/openwrt/' bin/targets/armvirt/64/*.tar.gz
-
-      - name: Package Sbcbox Firmware - armvirt64_cortex-a53
+      - name: Package Sbcbox Firmware
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: openwrt/bin/targets/armvirt/64/*.tar.gz
@@ -60,19 +51,6 @@ jobs:
           KERNEL_VERSION_NAME: 5.4.142
           OPENWRT_VER: Immortal21.02
           WHOAMI: river
-
-      - name: Install Feeds & Make Config - bcm2711-raspi4_cortex-a72
-        env:
-          CONFIG: 'configs/bcm2711-raspi4-openwrt.sh'
-        run: |
-          bash update_config.sh $CONFIG
-
-      - name: Compile Openwrt - bcm2711-raspi4_cortex-a72
-        run: |
-          cd openwrt
-          make download -j8
-          make -j$(nproc) || make -j1 V=s
-          rename 's/immortalwrt/openwrt/' bin/targets/bcm27xx/bcm2711/*.img.gz
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
@@ -82,5 +60,5 @@ jobs:
           tag_name: openwrt-sbcbox-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ env.PACKAGED_OUTPUTPATH }}/*
-            openwrt/bin/targets/bcm27xx/bcm2711/*squashfs*.img.gz
+            openwrt/bin/targets/*/*/*.img.gz
           body_path: configs/release_note.txt
