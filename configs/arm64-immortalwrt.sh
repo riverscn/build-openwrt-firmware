@@ -26,6 +26,3 @@ CONFIG_TARGET_armvirt_64=y
 CONFIG_TARGET_armvirt_64_Default=y
 
 EOF
-
-make defconfig
-cat .config
