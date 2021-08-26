@@ -48,6 +48,7 @@ jobs:
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
+          cd immortalwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           cat $COMMON >> $CONFIG_FILE
@@ -79,6 +80,7 @@ jobs:
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
+          cd immortalwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           cat $COMMON >> $CONFIG_FILE
