@@ -48,6 +48,8 @@ jobs:
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
           cat $COMMON >> $CONFIG_FILE
           make defconfig
           cat .config
@@ -77,6 +79,8 @@ jobs:
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a
           cat $COMMON >> $CONFIG_FILE
           make defconfig
           cat .config

@@ -2,9 +2,6 @@
 
 cd immortalwrt
 
-./scripts/feeds update -a
-./scripts/feeds install -a
-
 cat >.config <<-EOF
 ## target
 CONFIG_TARGET_bcm27xx=y
