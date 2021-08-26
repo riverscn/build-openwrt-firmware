@@ -42,7 +42,7 @@ jobs:
       - name: Install Feeds & Make Config - armvirt64_cortex-a53
         env:
           CONFIG: 'configs/arm64-immortalwrt.sh'
-          COMMON: 'configs/custom.seed'
+          COMMON: '../configs/custom.seed'
         run: |
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
@@ -73,7 +73,7 @@ jobs:
       - name: Install Feeds & Make Config - bcm2711-raspi4_cortex-a72
         env:
           CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
-          COMMON: 'configs/custom.seed'
+          COMMON: '../configs/custom.seed'
         run: |
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
