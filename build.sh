@@ -28,13 +28,7 @@ FETCH_OPENWRT_SCRIPT="fetch_openwrt.sh"
 
 # Pack Other SBC Boxes' firmware
 (
-    git clone https://github.com/unifreq/openwrt_packit.git && cd openwrt_packit || cd openwrt_packit && git stash && git pull
+    git clone https://github.com/unifreq/openwrt_packit.git || cd openwrt_packit && git stash && git pull && cd ..
 
-    OPENWRT_ARMVIRT="../openwrt/bin/targets/armvirt/64/*.tar.gz"
-    PACKAGE_SOC="all"
-    KERNEL_VERSION_NAME="5.4.142"
-    OPENWRT_VER="Immortal21.02"
-    WHOAMI="river"
-    
-    . openwrt_flippy.sh
+    sudo bash ./pack_firmware.sh
 )
