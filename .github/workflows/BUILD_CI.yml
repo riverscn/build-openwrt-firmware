@@ -39,37 +39,13 @@ jobs:
       - name: Clone immortalwrt's openwrt
         run: |
           git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
+      
       - name: Install feeds & Make config
         env:
-          CONFIG: 'configs/arm64-immortal21.02-gateway-flowoffload-sfe.config'
+          CONFIG: 'configs/arm64-immortal21.02-gateway-flowoffload-sfe.sh'
         run: |
-          cp $CONFIG immortalwrt/.config
-          cd immortalwrt
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-
-          packages=" \
-          brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
-          kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs ntfs-3g \
-          kmod-usb2 kmod-usb3 kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
-          kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
-          blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip \
-          lscpu htop iperf3 curl lm-sensors python3 install-program
-          "
-          sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' \
-              target/linux/armvirt/Makefile
-          for x in $packages; do
-              sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
-          done
-          
-          sed -i "/luci-app-vlmcsd/d" include/target.mk
-          sed -i "/luci-app-ssr-plus/d" include/target.mk
-          sed -i "/luci-app-arpbind/d" include/target.mk
-          sed -i "/ddns-scripts_aliyun/a\  ddns-scripts-cloudflare \\\\" include/target.mk
-          sed -i "/DEFAULT_PACKAGES.tweak:=\\\\/a\  kmod-ipt-offload \\\\" include/target.mk
-          sed -i "/DEFAULT_PACKAGES.tweak:=\\\\/a\  kmod-nft-offload \\\\" include/target.mk
-          make defconfig
-          cat .config
+          chmod +x $CONFIG
+          ./$CONFIG
 
       - name: Compile openwrt
         run: |
@@ -81,7 +57,7 @@ jobs:
       - name: Package Armvirt as OpenWrt
         uses: unifreq/openwrt_packit@master
         env:
-          OPENWRT_ARMVIRT: immortalwrt/bin/targets/*/*/*.tar.gz
+          OPENWRT_ARMVIRT: immortalwrt/bin/targets/armvirt/64/*.tar.gz
           PACKAGE_SOC: all
           KERNEL_VERSION_NAME: 5.13.12_5.4.142
           OPENWRT_VER: Immortal21.02
