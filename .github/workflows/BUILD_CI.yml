@@ -30,29 +30,20 @@ jobs:
         run: |
           docker rmi `docker images -q`
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
-          curl -s https://build-scripts.project-openwrt.eu.org/init_build_environment.sh | sudo bash
-          sudo -E apt-get -qq install btrfs-progs dosfstools uuid-runtime mount util-linux parted rename
+          . prepare_env.sh
           sudo -E apt-get -qq autoremove --purge
           sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "$TZ"
+      
       - name: Clone immortalwrt's openwrt
         run: |
-          git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
+          . fetch_openwrt.sh
       
       - name: Install Feeds & Make Config - armvirt64_cortex-a53
         env:
           CONFIG: 'configs/arm64-openwrt.sh'
-          COMMON: 'configs/custom.seed'
         run: |
-          rm -f $CONFIG_FILE 2> /dev/null
-          chmod +x $CONFIG
-          ./$CONFIG
-          cat $COMMON >> .config
-          cd openwrt
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-          make defconfig
-          cat .config
+          bash update_config.sh $CONFIG
 
       - name: Compile Openwrt - armvirt64_cortex-a53
         run: |
@@ -73,25 +64,15 @@ jobs:
       - name: Install Feeds & Make Config - bcm2711-raspi4_cortex-a72
         env:
           CONFIG: 'configs/bcm2711-raspi4-openwrt.sh'
-          COMMON: 'configs/custom.seed'
         run: |
-          rm -f $CONFIG_FILE 2> /dev/null
-          chmod +x $CONFIG
-          ./$CONFIG
-          cat $COMMON >> .config
-          cd openwrt
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-          make defconfig
-          cat .config
+          bash update_config.sh $CONFIG
 
       - name: Compile Openwrt - bcm2711-raspi4_cortex-a72
         run: |
           cd openwrt
           make download -j8
           make -j$(nproc) || make -j1 V=s
-          rename 's/immortalwrt/openwrt/' bin/targets/bcm27xx/bcm2711/*.tar.gz
-
+          rename 's/immortalwrt/openwrt/' bin/targets/bcm27xx/bcm2711/*.img.gz
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1

@@ -1,5 +1,5 @@
 # Openwrt sbcbox firmware
-Actions for build openwrt router box.
+Scripts for build openwrt router box firmware.
 
 # Features
 
@@ -17,3 +17,11 @@ Actions for build openwrt router box.
 * luci-app-udpxy
 * luci-app-upnp
 * luci-theme-argon
+
+# Build Locally
+
+Alternatively, you can build openwrt on your own computer.
+
+Support Ubuntu or Debian. You can run in a Virtual Machine or Docker [container](https://github.com/riverscn/openwrt-dev-container) (recommend).
+
+Run `./build.sh` and that's all.
