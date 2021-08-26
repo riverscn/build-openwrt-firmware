@@ -54,7 +54,7 @@ jobs:
           make -j$(nproc) || make -j1 V=s
           rename 's/immortalwrt/openwrt/' bin/targets/armvirt/64/*.tar.gz
 
-      - name: Package armvirt as sbcbox firmware:: aarch64_cortex-a53
+      - name: Package armvirt as sbcbox firmware - aarch64_cortex-a53
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: immortalwrt/bin/targets/armvirt/64/*.tar.gz
