@@ -35,7 +35,7 @@ jobs:
           sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "$TZ"
       
-      - name: Clone immortalwrt's openwrt
+      - name: Fetch Openwrt
         run: |
           . fetch_openwrt.sh
       
@@ -43,7 +43,7 @@ jobs:
         run: |
           . compile_openwrt.sh
 
-      - name: Package Sbcbox Firmware
+      - name: Package SBC Box Firmware
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: openwrt/bin/targets/armvirt/64/*.tar.gz
