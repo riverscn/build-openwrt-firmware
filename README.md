@@ -3,8 +3,8 @@ Actions for build bypass-gateway openwrt router box.
 
 # Features
 
-* Use Immortalwrt Source, which makes things easier.
-* For TV boxes, use flippy's kernel, which makes things better.
+* Use [Immortalwrt](https://github.com/immortalwrt/immortalwrt) source, which makes things easier.
+* For TV boxes, use [unifreq's script](https://github.com/unifreq/openwrt_packit) and [flippy's kernel](https://github.com/breakings/OpenWrt/tree/main/opt/kernel) (pre-compiled), which makes things better.
 * Enable IPv6 compatibility by default.
 * Enable Flow Offloading and Full Cone NAT by default.
 * Enable WiFi by default. You can turn it off to achieve lower temperature.
