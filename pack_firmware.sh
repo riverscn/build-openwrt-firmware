@@ -3,7 +3,7 @@
 OPENWRT_ARMVIRT="$(pwd)/openwrt/bin/targets/armvirt/64/*.tar.gz"
 PACKAGE_SOC="all"
 KERNEL_VERSION_NAME="5.4.142"
-OPENWRT_VER="Immortal21.02"
+OPENWRT_VER="immortal21.02"
 WHOAMI="river"
 
 cd openwrt
