@@ -2,6 +2,9 @@
 
 cd immortalwrt
 
+./scripts/feeds update -a
+./scripts/feeds install -a
+
 packages=" \
 brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
 kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs ntfs-3g \
