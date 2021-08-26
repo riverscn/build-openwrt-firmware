@@ -9,7 +9,7 @@ Actions for build openwrt router box.
 * Enable IPv6 compatibility by default.
 * Enable Flow Offloading and Full Cone NAT by default.
 * Enable WiFi by default. You can turn it off to achieve lower temperature.
-* You can fork this repo and make your own configs. It's very easy.
+* You can fork this repo and make your own [package config](https://github.com/riverscn/openwrt-sbcbox-firmware/blob/main/configs/custom.seed). It's very easy.
 
 # Pre-installed packages
 
