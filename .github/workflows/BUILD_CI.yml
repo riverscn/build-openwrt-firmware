@@ -42,7 +42,7 @@ jobs:
       
       - name: Install feeds & Make config
         env:
-          CONFIG: 'configs/arm64-immortal21.02-gateway-flowoffload-sfe.sh'
+          CONFIG: 'configs/arm64-immortalwrt.sh'
         run: |
           chmod +x $CONFIG
           ./$CONFIG
