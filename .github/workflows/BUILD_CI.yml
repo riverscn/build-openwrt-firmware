@@ -37,17 +37,17 @@ jobs:
           sudo timedatectl set-timezone "$TZ"
       - name: Clone immortalwrt's openwrt
         run: |
-          git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt
+          git clone -b openwrt-21.02 --single-branch https://github.com/immortalwrt/immortalwrt openwrt
       
       - name: Install Feeds & Make Config - armvirt64_cortex-a53
         env:
-          CONFIG: 'configs/arm64-immortalwrt.sh'
+          CONFIG: 'configs/arm64-openwrt.sh'
           COMMON: '../configs/custom.seed'
         run: |
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
-          cd immortalwrt
+          cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           cat $COMMON >> .config
@@ -56,7 +56,7 @@ jobs:
 
       - name: Compile Openwrt - armvirt64_cortex-a53
         run: |
-          cd immortalwrt
+          cd openwrt
           make download -j8
           make -j$(nproc) || make -j1 V=s
           rename 's/immortalwrt/openwrt/' bin/targets/armvirt/64/*.tar.gz
@@ -64,7 +64,7 @@ jobs:
       - name: Package Sbcbox Firmware - armvirt64_cortex-a53
         uses: unifreq/openwrt_packit@master
         env:
-          OPENWRT_ARMVIRT: immortalwrt/bin/targets/armvirt/64/*.tar.gz
+          OPENWRT_ARMVIRT: openwrt/bin/targets/armvirt/64/*.tar.gz
           PACKAGE_SOC: all
           KERNEL_VERSION_NAME: 5.4.142
           OPENWRT_VER: Immortal21.02
@@ -72,13 +72,13 @@ jobs:
 
       - name: Install Feeds & Make Config - bcm2711-raspi4_cortex-a72
         env:
-          CONFIG: 'configs/bcm2711-raspi4-immortalwrt.sh'
+          CONFIG: 'configs/bcm2711-raspi4-openwrt.sh'
           COMMON: '../configs/custom.seed'
         run: |
           rm -f $CONFIG_FILE 2> /dev/null
           chmod +x $CONFIG
           ./$CONFIG
-          cd immortalwrt
+          cd openwrt
           ./scripts/feeds update -a
           ./scripts/feeds install -a
           cat $COMMON >> .config
@@ -87,7 +87,7 @@ jobs:
 
       - name: Compile Openwrt - bcm2711-raspi4_cortex-a72
         run: |
-          cd immortalwrt
+          cd openwrt
           make download -j8
           make -j$(nproc) || make -j1 V=s
           rename 's/immortalwrt/openwrt/' bin/targets/bcm27xx/bcm2711/*.tar.gz
@@ -101,5 +101,5 @@ jobs:
           tag_name: openwrt-sbcbox-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ env.PACKAGED_OUTPUTPATH }}/*
-            immortalwrt/bin/targets/bcm27xx/bcm2711/*squashfs*.img.gz
+            openwrt/bin/targets/bcm27xx/bcm2711/*squashfs*.img.gz
           body_path: configs/release_note.txt
