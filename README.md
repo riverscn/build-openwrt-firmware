@@ -19,6 +19,7 @@ Scripts for building openwrt router box firmware.
 * luci-app-udpxy
 * luci-app-upnp
 * luci-theme-argon
+* luci-app-zerotier
 
 # Config files
 
