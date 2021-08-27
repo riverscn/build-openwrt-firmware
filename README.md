@@ -1,4 +1,4 @@
-# Openwrt sbcbox firmware
+# Build Openwrt firmware with ease
 Scripts for build openwrt router box firmware.
 
 [![Build OpenWrt Firmware](https://github.com/riverscn/openwrt-sbcbox-firmware/actions/workflows/BUILD_CI.yml/badge.svg)](https://github.com/riverscn/openwrt-sbcbox-firmware/actions/workflows/BUILD_CI.yml)
