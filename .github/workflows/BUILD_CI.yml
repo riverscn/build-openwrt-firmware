@@ -37,11 +37,11 @@ jobs:
       
       - name: Fetch Openwrt
         run: |
-          . fetch_openwrt.sh
+          bash fetch_openwrt.sh
       
       - name: Compile Openwrt
         run: |
-          . compile_openwrt.sh
+          bash compile_openwrt.sh
 
       - name: Package SBC Box Firmware
         uses: unifreq/openwrt_packit@master
