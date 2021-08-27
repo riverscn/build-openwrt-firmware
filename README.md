@@ -43,7 +43,7 @@ Scripts for building openwrt router box firmware.
 
 ## Build online
 
-[Fork](https://github.com/riverscn/openwrt-sbcbox-firmware) this repo and create Github Actions workflow!
+[fork this repo](https://github.com/riverscn/build-openwrt-firmware/generate) and create Github Actions workflow!
 
 ## Build locally
 
