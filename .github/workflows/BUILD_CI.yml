@@ -29,16 +29,18 @@ jobs:
       - name: Maximize Build Space
         run: |
           docker rmi `docker images -q`
-          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
-          sudo -E apt-get -qq autoremove --purge
-          sudo -E apt-get -qq clean
           echo "Free space:"
           df -h
       
       - name: Install Depends
         run: |
+          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
           bash prepare_env.sh
+          sudo -E apt-get -qq autoremove --purge
+          sudo -E apt-get -qq clean
           sudo timedatectl set-timezone "$TZ"
+          echo "Free space:"
+          df -h
       
       - name: Fetch Openwrt
         run: |
