@@ -14,8 +14,8 @@ Scripts to upgrade Phicomm N1:
 ```
 cd /mnt/mmcblk2p4
 rm *.img
-wget https://github.com/unifreq/openwrt_packit/blob/master/files/update-amlogic-openwrt.sh
+wget https://github.com/unifreq/openwrt_packit/raw/master/files/update-amlogic-openwrt.sh
 wget firmware_url
-gzip -d firmware.img.gz && rm firmware.img.gz
-bash update-amlogic-openwrt.sh
+gzip -d firmware.img.gz
+bash update-amlogic-openwrt.sh firmware.img
 ```
