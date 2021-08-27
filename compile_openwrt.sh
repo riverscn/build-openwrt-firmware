@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 for FILE in ./configs/*-openwrt.sh
 do
