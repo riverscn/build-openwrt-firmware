@@ -9,8 +9,7 @@ WHOAMI="river"
 cd openwrt
 rename -f 's/immortalwrt/openwrt/' bin/targets/*/*/*.*.gz
 rename -f "s/sysupgrade/${OPENWRT_VER}/" bin/targets/*/*/*.img.gz
-rm bin/targets/*/*/*factory.img.gz
+rm bin/targets/*/*/*rpi*factory.img.gz
 cd ..
 
-wget https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
 source openwrt_flippy.sh

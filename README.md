@@ -36,6 +36,8 @@ Scripts for building openwrt router box firmware.
 
 Alternatively, you can build openwrt on your own computer. Ubuntu or Debian is supported.
 
-You can use Virtual Machine or Docker [container](https://github.com/riverscn/openwrt-dev-container) (recommend).
+You can use Virtual Machine or Docker container. You can use [this one](https://github.com/riverscn/openwrt-dev-container).
+
+Be ware: if you use Docker for Windows, [read this](https://blog.bryanroessler.com/2020-12-14-btrfs-on-wsl2/).
 
 Run `./build.sh` and that's all.
