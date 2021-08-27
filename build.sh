@@ -19,6 +19,8 @@ PACKAGED_OUTPUTPATH="/opt/openwrt_packit/tmp"
 
 # COPY bin files
 (
+    rm -f bin/ 2> /dev/null
+    mkdir bin/
     sudo mv ${PACKAGED_OUTPUTPATH}/* bin/
     mv openwrt/bin/targets/*/*/*.img.gz bin/
 )
