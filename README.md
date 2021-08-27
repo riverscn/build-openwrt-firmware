@@ -15,11 +15,21 @@ Scripts for building openwrt router box firmware.
 
 # Pre-installed packages
 
+## Common
+
 * luci-app-passwall
 * luci-app-udpxy
 * luci-app-upnp
 * luci-theme-argon
 * luci-app-zerotier
+
+## Only for x86
+
+* luci-app-acme
+* luci-app-iptvhelper
+* luci-app-mwan3
+* luci-app-omcproxy
+* luci-app-sqm
 
 # Config files
 
