@@ -48,7 +48,7 @@ jobs:
       
       - name: Compile Openwrt
         run: |
-          bash compile_openwrt.sh
+          bash compile_openwrt.sh actions
 
       - name: Package Openwrt Firmware
         uses: unifreq/openwrt_packit@master
