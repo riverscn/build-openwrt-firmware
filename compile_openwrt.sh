@@ -11,6 +11,6 @@ do
         make download -j8
         make -j$(nproc) || make -j1 V=s
         mv bin/targets/*/*/*.*.gz ../bin
-        if [ "$1"-e "actions"]; then make clean; fi
+        if [ "$1"-e "actions" ]; then make clean; fi
     )
 done
