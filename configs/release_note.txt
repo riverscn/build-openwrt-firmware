@@ -1,5 +1,21 @@
-This is OpenWrt firmware for Armvirt 64
 * Firmware information
 Default IP: 192.168.1.1
 Default username: root
 Default password: password
+
+X86 and raspberry pi are able to use build-in sysupgrade.
+
+Phicomm N1 install to emmc:
+```
+/root/install-to-emmc.sh
+```
+
+Scripts to upgrade Phicomm N1:
+```
+cd /mnt/mmcblk2p4
+rm *.img
+wget https://github.com/unifreq/openwrt_packit/blob/master/files/update-amlogic-openwrt.sh
+wget firmware_url
+tar -zxvf firmware.img.gz && rm firmware.img.gz
+bash update-amlogic-openwrt.sh
+```
