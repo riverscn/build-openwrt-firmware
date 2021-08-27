@@ -12,5 +12,4 @@ rename -f "s/sysupgrade/${OPENWRT_VER}/" bin/targets/*/*/*.img.gz
 rm bin/targets/*/*/*factory.img.gz
 cd ..
 
-wget https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
 source openwrt_flippy.sh

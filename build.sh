@@ -14,6 +14,7 @@ PACKAGED_OUTPUTPATH="/opt/openwrt_packit/tmp"
 
 # Pack Other SBC Boxes' firmware
 (
+    wget https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
     sudo bash ${PACK_FIRMWARE_SCRIPT}
 )
 
