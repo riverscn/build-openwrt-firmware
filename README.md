@@ -37,4 +37,6 @@ Alternatively, you can build openwrt on your own computer. Ubuntu or Debian is s
 
 You can use Virtual Machine or Docker [container](https://github.com/riverscn/openwrt-dev-container) (recommend).
 
+Be ware: if you use Docker for Windows, [read this](https://blog.bryanroessler.com/2020-12-14-btrfs-on-wsl2/).
+
 Run `./build.sh` and that's all.
