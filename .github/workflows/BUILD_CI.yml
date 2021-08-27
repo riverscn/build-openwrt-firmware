@@ -47,7 +47,7 @@ jobs:
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: openwrt/bin/targets/armvirt/64/*.tar.gz
-          PACKAGE_SOC: all
+          PACKAGE_SOC: s905d
           KERNEL_VERSION_NAME: 5.4.142
           OPENWRT_VER: Immortal21.02
           WHOAMI: river
@@ -59,6 +59,6 @@ jobs:
         with:
           tag_name: openwrt-sbcbox-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
-            ${{ env.PACKAGED_OUTPUTPATH }}/*
+            ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz
             openwrt/bin/targets/*/*/*.img.gz
           body_path: configs/release_note.txt
