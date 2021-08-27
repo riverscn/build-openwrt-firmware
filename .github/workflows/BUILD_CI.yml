@@ -43,7 +43,7 @@ jobs:
         run: |
           bash compile_openwrt.sh
 
-      - name: Package SBC Box Firmware
+      - name: Package Openwrt Firmware
         uses: unifreq/openwrt_packit@master
         env:
           OPENWRT_ARMVIRT: openwrt/bin/targets/armvirt/64/*.tar.gz
@@ -57,7 +57,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: openwrt-sbcbox-firmware_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: openwrt-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz
             openwrt/bin/targets/*/*/*.img.gz
