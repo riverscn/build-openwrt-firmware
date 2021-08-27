@@ -12,4 +12,8 @@ rename -f 's/immortalwrt/openwrt/' bin/*.*.gz
 rename -f "s/sysupgrade/${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.img.gz
 rename -f "s/combined/combined-${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.img.gz
 
+rm bin/targets/*/*/*rpi*factory.img.gz
+rm bin/targets/*/*/*rootfs.img.gz
+rm bin/targets/*/*/*ext4*.img.gz
+
 source openwrt_flippy.sh
