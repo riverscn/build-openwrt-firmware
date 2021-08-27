@@ -1,4 +1,6 @@
 ## luci app
+## https://github.com/klever1988/nanopi-openwrt/blob/master/luci_app_manual.md
+
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-passwall=y
 CONFIG_PACKAGE_luci-app-udpxy=y

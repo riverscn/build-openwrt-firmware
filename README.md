@@ -20,10 +20,21 @@ Scripts for build openwrt router box firmware.
 * luci-app-upnp
 * luci-theme-argon
 
-# Build Locally
+# Config files
 
-Alternatively, you can build openwrt on your own computer.
+* `custom.seed` is used for common `.config` settings. Change it and apply it to all builds.
+* `*-openwrt.sh` is used to define each build target. You can create new files to add more targets.
 
-Support Ubuntu or Debian. You can run in a Virtual Machine or Docker [container](https://github.com/riverscn/openwrt-dev-container) (recommend).
+# Build your own firmwares
+
+## Build online
+
+[Fork](https://github.com/riverscn/openwrt-sbcbox-firmware) this repo and create Github Actions workflow!
+
+## Build locally
+
+Alternatively, you can build openwrt on your own computer. Ubuntu or Debian is supported.
+
+You can use Virtual Machine or Docker [container](https://github.com/riverscn/openwrt-dev-container) (recommend).
 
 Run `./build.sh` and that's all.
