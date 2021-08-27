@@ -14,13 +14,14 @@ PACKAGED_OUTPUTPATH="/opt/openwrt_packit/tmp"
 
 # Pack Other SBC Boxes' firmware
 (
+    rm -f openwrt_flippy.sh 2> /dev/null
     wget https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
     sudo bash ${PACK_FIRMWARE_SCRIPT}
 )
 
 # COPY bin files
 (
-    rm -f bin/ 2> /dev/null
+    rm -rf bin/ 2> /dev/null
     mkdir bin/
     sudo mv ${PACKAGED_OUTPUTPATH}/*.img.gz bin/
     mv openwrt/bin/targets/*/*/*.img.gz bin/
