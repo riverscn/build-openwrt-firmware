@@ -3,6 +3,8 @@ Scripts for building openwrt router box firmware.
 
 [![Build OpenWrt Firmware](https://github.com/riverscn/openwrt-sbcbox-firmware/actions/workflows/BUILD_CI.yml/badge.svg)](https://github.com/riverscn/openwrt-sbcbox-firmware/actions/workflows/BUILD_CI.yml)
 
+[下载最新固件](https://github.com/riverscn/build-openwrt-firmware/releases)
+
 # Features
 
 * Use [Immortalwrt](https://github.com/immortalwrt/immortalwrt) source, which makes things easier.
