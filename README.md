@@ -13,6 +13,7 @@ Scripts for building openwrt router box firmware.
 * Enable IPv6 compatibility by default.
 * Enable Flow Offloading and Full Cone NAT by default.
 * Enable WiFi by default. You can turn it off to achieve lower temperature.
+* Enable USB Ethernet and Storage support.
 * You can [fork this repo](https://github.com/riverscn/build-openwrt-firmware/generate) and make your own [package config](configs). It's very easy.
 
 # Pre-installed packages
