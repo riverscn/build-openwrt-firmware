@@ -25,5 +25,4 @@ mkdir bin
 # COPY bin files
 (
     sudo mv ${PACKAGED_OUTPUTPATH}/*.img.gz bin/
-    mv openwrt/bin/targets/*/*/*.img.gz bin/
 )
