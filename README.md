@@ -22,7 +22,7 @@ Scripts for build openwrt router box firmware.
 
 # Config files
 
-* `custom.seed` is used for common `.config` settings. Change it and apply it to all builds.
+* `custom.seed` is used for common `.config` settings. All targets share these settings.
 * `*-openwrt.sh` is used to define each build target. You can create new files to add more targets.
 
 # Build your own firmwares
