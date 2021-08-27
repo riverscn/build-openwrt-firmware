@@ -25,7 +25,7 @@ Scripts for building openwrt router box firmware.
 * luci-theme-argon
 * luci-app-zerotier
 
-## Only for x86
+## Only for main router (x86)
 
 * luci-app-acme
 * luci-app-iptvhelper
