@@ -13,7 +13,7 @@ Scripts for building openwrt router box firmware.
 * Enable IPv6 compatibility by default.
 * Enable Flow Offloading and Full Cone NAT by default.
 * Enable WiFi by default. You can turn it off to achieve lower temperature.
-* You can fork this repo and make your own [package config](https://github.com/riverscn/openwrt-sbcbox-firmware/blob/main/configs/custom.seed). It's very easy.
+* You can [fork this repo](https://github.com/riverscn/build-openwrt-firmware/generate) and make your own [package config](configs). It's very easy.
 
 # Pre-installed packages
 
@@ -35,8 +35,9 @@ Scripts for building openwrt router box firmware.
 
 # Config files
 
-* `custom.seed` is used for common `.config` settings. All targets share these settings.
-* `*-openwrt.sh` is used to define each build target. You can create new files to add more targets.
+* [custom.seed](configs/custom.seed) is used for common `.config` settings. All targets share these settings.
+* [\*-openwrt.sh](configs) is used to define each build target. You can create new files to add more targets.
+* [pack_firmware.sh](pack_firmware.sh) and [BUILD_CI.yml](.github/workflows/BUILD_CI.yml) contains ENV [PACKAGE_SOC](https://github.com/unifreq/openwrt_packit/blob/master/README.ACTION.md) to determine what targets to build.
 
 # Build your own firmwares
 
