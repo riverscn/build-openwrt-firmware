@@ -53,7 +53,7 @@ jobs:
       - name: Package Openwrt Firmware
         uses: unifreq/openwrt_packit@master
         env:
-          OPENWRT_ARMVIRT: openwrt/bin/targets/armvirt/64/*.tar.gz
+          OPENWRT_ARMVIRT: bin/*.tar.gz
           PACKAGE_SOC: s905d
           KERNEL_VERSION_NAME: 5.4.142
           OPENWRT_VER: Immortal21.02
@@ -66,6 +66,5 @@ jobs:
         with:
           tag_name: openwrt-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
-            ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz
-            openwrt/bin/targets/*/*/*.img.gz
+            bin/*.img.gz
           body_path: configs/release_note.txt
