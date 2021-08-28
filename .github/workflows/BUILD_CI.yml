@@ -33,7 +33,7 @@ jobs:
       - name: setenv
         if: github.event.schedule=='0 21 * * 5'
         run: |
-          echo "::set-env name=CONFIG::'all-opnwrt'"
+          echo "::set-env name=CONFIG::'all-openwrt'"
           echo "::set-env name=TXT::'release_note.txt'"
 
       - name: Checkout
