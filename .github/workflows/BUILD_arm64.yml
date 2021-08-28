@@ -1,17 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build OpenWrt Firmware
+name: Build OpenWrt Firmware - ARM64
 
 # Controls when the workflow will run
 on:
   repository_dispatch:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      config:
-        description: 'Input config script file name without ".sh". "all" to build all the configs.'
-        required: false
-        default: 'all'
+  schedule:
+    - cron: '0 21 * * 5'
 
 env:
   TZ: 'Asia/Shanghai'
@@ -20,7 +17,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     env:
-      CONFIG: ${{ github.event.client_payload.config || github.event.inputs.config }}
+      CONFIG: arm64-openwrt
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -45,13 +42,13 @@ jobs:
         run: |
           bash fetch_openwrt.sh
 
-      - name: Compile Openwrt ${{ github.event.client_payload.config || github.event.inputs.config }} packages
+      - name: Compile Openwrt ${{ env.CONFIG }} packages
         run: |
           bash compile_openwrt.sh config/${{ env.CONFIG }}.sh
 
       - name: Package Openwrt Firmware
         run: |
-          if [ ${{ env.CONFIG }} = "arm64-openwrt.sh" ]; then
+          if [ ${{ env.CONFIG }} = "arm64-openwrt" ]; then
             wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
             bash pack_firmware.sh
             mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/

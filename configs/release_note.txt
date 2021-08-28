@@ -3,21 +3,6 @@ Default IP: 192.168.1.1
 Default username: root
 Default password: password
 Default AP: Openwrt (open)
-N1 AP: Phicomm_N1 (password)
 
 X86 and Raspberry Pi are able to use build-in sysupgrade.
 
-Phicomm N1 install to emmc:
-```
-/root/install-to-emmc.sh
-```
-
-Scripts to upgrade Phicomm N1:
-```
-cd /mnt/mmcblk2p4
-rm *.img
-wget https://github.com/unifreq/openwrt_packit/raw/master/files/update-amlogic-openwrt.sh
-wget firmware_url
-gzip -d firmware.img.gz
-bash update-amlogic-openwrt.sh firmware.img
-```
