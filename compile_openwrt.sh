@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+OPENWRT_VER="immortal21.02"
+
 rm -rf bin/ 2> /dev/null
 mkdir bin
 
