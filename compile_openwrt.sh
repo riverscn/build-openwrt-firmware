@@ -19,6 +19,7 @@ if [[ -z "$1" ]] || [[ "$1" = "all" ]]
                 make -j$(nproc) || make -j1 V=s
                 mv bin/targets/*/*/*.*.gz ../bin/
                 if [ "$1" = "all" ]; then make clean; fi
+                cd ..
             )
         done
   else
@@ -30,6 +31,7 @@ if [[ -z "$1" ]] || [[ "$1" = "all" ]]
     make download -j8
     make -j$(nproc) || make -j1 V=s
     mv bin/targets/*/*/*.*.gz ../bin/
+    cd ..
 fi
 
 KERNEL_VERSION_ORIG="$(awk '/kernel/ {print $3}' $(pwd)/openwrt/bin/targets/*/*/*.manifest | awk -F '-' '{print $1}' | awk 'NR==1')"
@@ -38,6 +40,6 @@ rename -f 's/immortalwrt/openwrt/' bin/*.*.gz
 rename -f "s/sysupgrade/${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.img.gz
 rename -f "s/combined/combined-${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.img.gz
 
-rm bin/*rpi*factory.img.gz
-rm bin/*rootfs.img.gz
-rm bin/*ext4*.img.gz
+rm bin/*rpi*factory.img.gz 2> /dev/null
+rm bin/*rootfs.img.gz 2> /dev/null
+rm bin/*ext4*.img.gz 2> /dev/null
