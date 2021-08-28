@@ -5,6 +5,14 @@ Scripts for building openwrt router box firmware.
 
 [下载最新固件](https://github.com/riverscn/build-openwrt-firmware/releases)
 
+# Default hardware targets
+
+* X86
+* Raspberry Pi 4 Series
+* Phicomm N1
+
+You can [add your own targets](#config-files)
+
 # Features
 
 * Use [Immortalwrt](https://github.com/immortalwrt/immortalwrt) source, which makes things easier.
