@@ -28,6 +28,7 @@ jobs:
 
       - name: Maximize Build Space
         run: |
+          pwd
           docker rmi `docker images -q`
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
           sudo -E apt-get -qq autoremove --purge
@@ -37,28 +38,29 @@ jobs:
       
       - name: Install Depends
         run: |
+          pwd
           bash prepare_env.sh
           sudo timedatectl set-timezone "$TZ"
           echo "Free space:"
           df -h
       
       - name: Fetch Openwrt
+        working-directory: ${{ github.workspace }}
         run: |
+          pwd
           bash fetch_openwrt.sh
-      
+              
       - name: Compile Openwrt
+        working-directory: ${{ github.workspace }}
         run: |
+          pwd
           bash compile_openwrt.sh actions
-        shell: bash
 
       - name: Package Openwrt Firmware
-        uses: unifreq/openwrt_packit@master
-        env:
-          OPENWRT_ARMVIRT: bin/*.tar.gz
-          PACKAGE_SOC: s905d
-          KERNEL_VERSION_NAME: 5.4.142
-          OPENWRT_VER: immortal21.02
-          WHOAMI: river
+        working-directory: ${{ github.workspace }}
+        run: |
+          pwd
+          bash pack_firmware.sh
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
@@ -67,5 +69,5 @@ jobs:
         with:
           tag_name: openwrt-firmware_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
-            bin/*.img.gz
-          body_path: configs/release_note.txt
+            ${{ github.workspace }}/bin/*.img.gz
+          body_path: ${{ github.workspace }}/configs/release_note.txt
