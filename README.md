@@ -3,9 +3,9 @@ Scripts for building openwrt router box firmware.
 
 [下载最新固件](https://github.com/riverscn/build-openwrt-firmware/releases)
 
-[![Build - Phicomm N1](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_arm64.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_arm64.yml)
-[![Build - Raspberry Pi 4](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_bcm2711-raspi4.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_bcm2711-raspi4.yml)
 [![Build - X86](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_x86.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_x86.yml)
+[![Build - Raspberry Pi 4](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_bcm2711-raspi4.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_bcm2711-raspi4.yml)
+[![Build - Phicomm N1](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_arm64.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_arm64.yml)
 
 # Default hardware targets
 
