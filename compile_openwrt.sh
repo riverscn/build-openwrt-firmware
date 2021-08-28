@@ -41,5 +41,3 @@ rename -f "s/combined/combined-${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.im
 rm bin/*rpi*factory.img.gz
 rm bin/*rootfs.img.gz
 rm bin/*ext4*.img.gz
-
-ls bin/

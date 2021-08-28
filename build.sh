@@ -18,3 +18,5 @@ if [ "$1" = "arm64-openwrt" ] || [[ "$1" != "all" ]] || [[ -z "$1" ]]; then
     sudo bash ${PACK_FIRMWARE_SCRIPT}
     sudo mv ${PACKAGED_OUTPUTPATH}/*.img.gz bin/
 fi
+
+ls bin/
