@@ -3,7 +3,7 @@
 rm -rf bin/ 2> /dev/null
 mkdir bin
 
-if [[] -z "$1" ]] || [[ "$1" != "all" ]]
+if [[ -z "$1" ]] || [[ "$1" != "all" ]]
   then
     for FILE in ./configs/*-openwrt.sh
         do
