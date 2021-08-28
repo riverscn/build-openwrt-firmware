@@ -64,4 +64,4 @@ jobs:
           tag_name: openwrt-firmware-${{ env.CONFIG }}_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
-          body_path: ${{ github.workspace }}/configs/release_note.txt
+          body_path: ${{ github.workspace }}/configs/release_note_n1.txt
