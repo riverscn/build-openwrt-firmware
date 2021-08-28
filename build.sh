@@ -14,7 +14,7 @@ bash ${PREPARE_SCRIPT}
 bash ${FETCH_OPENWRT_SCRIPT}
 bash ${COMPILE_OPENWRT_SCRIPT} $1
 
-if [ "$1" = "arm64-openwrt" ] || [[ "$1" = "all" ]] || [[ -z "$1" ]]; then
+if [ "$1" = "arm64-openwrt.sh" ] || [[ "$1" = "all" ]] || [[ -z "$1" ]]; then
     # Pack Other SBC Boxes' firmware
     wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
     sudo bash ${PACK_FIRMWARE_SCRIPT}
