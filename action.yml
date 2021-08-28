@@ -1,0 +1,12 @@
+name: 'Build Openwrt Firmware'
+description: 'Build openwrt firmware with ease'
+inputs:
+  config:  # id of input
+    description: 'Config file name without ".sh". Use "all" for all.'
+    required: true
+    default: 'all'
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/build.sh ${{ github.action_path }}/configs/${{ inputs.config }}.sh
+      shell: bash
