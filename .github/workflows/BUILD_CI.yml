@@ -4,16 +4,14 @@ name: Build OpenWrt Firmware
 
 # Controls when the workflow will run
 on:
-  schedule:
-    - cron: '0 21 * * 5'
-  # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
-  #  branches: [ main ]
-  #pull_request:
-  #  branches: [ main ]
-
+  repository_dispatch:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      config:
+        description: 'Input config script file name without ".sh". "all" to build all the configs.'
+        required: false
+        default: 'all'
 
 env:
   TZ: 'Asia/Shanghai'
@@ -21,7 +19,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-20.04
-
+    env:
+      CONFIG: ${{ github.event.client_payload.config || github.event.inputs.config }}
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -46,22 +45,26 @@ jobs:
         run: |
           bash fetch_openwrt.sh
 
-      - name: Compile Openwrt
+      - name: Compile Openwrt ${{ github.event.client_payload.config || github.event.inputs.config }} packages
         run: |
-          bash compile_openwrt.sh actions
+          bash compile_openwrt.sh config/$CONFIG.sh
 
       - name: Package Openwrt Firmware
         run: |
-          wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
-          bash pack_firmware.sh
-          mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
+          if [ $CONFIG = "arm64-openwrt.sh" ]; then
+            wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
+            bash pack_firmware.sh
+            mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
+          else
+            echo "PACKAGED_OUTPUTDATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
+          fi
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: openwrt-firmware_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: openwrt-firmware-$CONFIG_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
           body_path: ${{ github.workspace }}/configs/release_note.txt
