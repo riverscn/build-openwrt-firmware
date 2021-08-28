@@ -3,6 +3,8 @@ Scripts for building openwrt router box firmware.
 
 [下载最新固件](https://github.com/riverscn/build-openwrt-firmware/releases)
 
+[使用方法及相关测试](https://blog.lishun.me/openwrt-mega-post)
+
 [![Build OpenWrt Firmware](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_CI.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_CI.yml)
 
 # Default hardware targets
