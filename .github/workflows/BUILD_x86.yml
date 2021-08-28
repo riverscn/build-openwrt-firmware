@@ -19,7 +19,7 @@ jobs:
     env:
       CONFIG: x86-openwrt
       TXT: release_note.txt
-      
+
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -47,7 +47,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: openwrt-firmware-${{ env.CONFIG }}_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: firmware-${{ env.CONFIG }}_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
           body_path: ${{ github.workspace }}/configs/${{ env.TXT }}
