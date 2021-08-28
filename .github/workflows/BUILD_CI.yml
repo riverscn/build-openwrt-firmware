@@ -28,7 +28,6 @@ jobs:
 
       - name: Maximize Build Space
         run: |
-          pwd
           docker rmi `docker images -q`
           sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
           sudo -E apt-get -qq autoremove --purge
@@ -38,29 +37,24 @@ jobs:
       
       - name: Install Depends
         run: |
-          pwd
           bash prepare_env.sh
           sudo timedatectl set-timezone "$TZ"
           echo "Free space:"
           df -h
       
       - name: Fetch Openwrt
-        working-directory: ${{ github.workspace }}
         run: |
-          pwd
           bash fetch_openwrt.sh
-              
+
       - name: Compile Openwrt
-        working-directory: ${{ github.workspace }}
         run: |
-          pwd
           bash compile_openwrt.sh actions
 
       - name: Package Openwrt Firmware
-        working-directory: ${{ github.workspace }}
         run: |
-          pwd
+          wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
           bash pack_firmware.sh
+          mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
