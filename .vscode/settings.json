@@ -1,0 +1,11 @@
+{
+    "files.watcherExclude": {
+        "**/build_dir/**": true,
+        "**/feeds/**": true,
+        "**/include/**": true,
+        "**/staging_dir/**": true,
+        "**/target/**": true,
+        "**/toolchain/**": true,
+        "**/tools/**": true
+    }
+}
