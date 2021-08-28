@@ -54,6 +54,8 @@ jobs:
             wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
             bash pack_firmware.sh
             mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
+          else
+            echo "PACKAGED_OUTPUTDATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
           fi
 
       - name: Upload OpenWrt Firmware to Releases
