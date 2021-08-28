@@ -5,7 +5,7 @@ OPENWRT_VER="immortal21.02"
 rm -rf bin/ 2> /dev/null
 mkdir bin
 
-if [[ -z "$1" ]] || [[ "$1" = "all" ]]
+if [[ -z "$1" ]] || [[ "$1" = "configs/all.sh" ]]
   then
     for FILE in ./configs/*-openwrt.sh
         do
