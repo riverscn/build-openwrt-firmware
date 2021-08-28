@@ -1,19 +1,17 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build OpenWrt Firmware
+name: Build OpenWrt Firmware - Arm64
 
 # Controls when the workflow will run
 on:
-  schedule:
-    - cron: '0 21 * * 5'
-  # Triggers the workflow on push or pull request events but only for the main branch
-  #push:
-  #  branches: [ main ]
-  #pull_request:
-  #  branches: [ main ]
-
+  repository_dispatch:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      config:
+        description: 'Config script file name. "all" to build all the configs.'
+        required: false
+        default: 'all'
 
 env:
   TZ: 'Asia/Shanghai'
@@ -48,13 +46,15 @@ jobs:
 
       - name: Compile Openwrt
         run: |
-          bash compile_openwrt.sh actions
+          bash compile_openwrt.sh config/${{ inputs.config }}
 
       - name: Package Openwrt Firmware
         run: |
-          wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
-          bash pack_firmware.sh
-          mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
+          if [ ${{ inputs.config }} = "arm64-openwrt.sh" ]; then
+            wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
+            bash pack_firmware.sh
+            mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
+          fi
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
