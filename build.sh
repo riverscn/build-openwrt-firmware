@@ -2,6 +2,8 @@
 
 ## This script is for build openwrt locally on your computer
 
+echo Build: $1
+
 PREPARE_SCRIPT="prepare_env.sh"
 FETCH_OPENWRT_SCRIPT="fetch_openwrt.sh"
 COMPILE_OPENWRT_SCRIPT="compile_openwrt.sh"
