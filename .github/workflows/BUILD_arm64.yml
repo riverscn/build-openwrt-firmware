@@ -19,49 +19,7 @@ jobs:
     env:
       CONFIG: arm64-openwrt
     steps:
-      - name: Checkout
-        uses: actions/checkout@main
-
-      - name: Maximize Build Space
-        run: |
-          docker rmi `docker images -q`
-          sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /usr/lib/jvm /opt/ghc
-          sudo -E apt-get -qq autoremove --purge
-          sudo -E apt-get -qq clean
-          echo "Free space:"
-          df -h
-      
-      - name: Install Depends
-        run: |
-          bash prepare_env.sh
-          sudo timedatectl set-timezone "$TZ"
-          echo "Free space:"
-          df -h
-      
-      - name: Fetch Openwrt
-        run: |
-          bash fetch_openwrt.sh
-
-      - name: Compile Openwrt ${{ env.CONFIG }} packages
-        run: |
-          bash compile_openwrt.sh config/${{ env.CONFIG }}.sh
-
-      - name: Package Openwrt Firmware
-        run: |
-          if [ ${{ env.CONFIG }} = "arm64-openwrt" ]; then
-            wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
-            bash pack_firmware.sh
-            mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
-          else
-            echo "PACKAGED_OUTPUTDATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
-          fi
-
-      - name: Upload OpenWrt Firmware to Releases
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Start ${{ env.CONFIG }} Compile
+        uses: ./.github/actions/my-action
         with:
-          tag_name: openwrt-firmware-${{ env.CONFIG }}_${{ env.PACKAGED_OUTPUTDATE }}
-          files: |
-            ${{ github.workspace }}/bin/*.img.gz
-          body_path: ${{ github.workspace }}/configs/release_note_n1.txt
+          config: ${{ env.CONFIG }}
