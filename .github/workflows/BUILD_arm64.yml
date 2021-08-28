@@ -31,7 +31,7 @@ jobs:
           echo "Free space:"
           df -h
       
-      - id: Run Build Script
+      - name: Run Build Script
         uses: local ./
         with:
           config: ${{ env.CONFIG }}
