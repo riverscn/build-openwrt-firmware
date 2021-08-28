@@ -33,8 +33,8 @@ jobs:
       - name: setenv
         if: github.event.schedule=='0 21 * * 5'
         run: |
-          echo "::set-env name=config::'all'"
-          echo "::set-env name=txt::'release_note.txt'"
+          echo "::set-env name=CONFIG::'all'"
+          echo "::set-env name=TXT::'release_note.txt'"
 
       - name: Checkout
         uses: actions/checkout@main
