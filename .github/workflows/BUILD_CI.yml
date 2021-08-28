@@ -19,7 +19,8 @@ env:
 jobs:
   build:
     runs-on: ubuntu-20.04
-
+    env:
+      CONFIG: ${{ github.event.client_payload.config || github.event.inputs.config }}
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -44,13 +45,13 @@ jobs:
         run: |
           bash fetch_openwrt.sh
 
-      - name: Compile Openwrt
+      - name: Compile Openwrt ${{ github.event.client_payload.config || github.event.inputs.config }} packages
         run: |
-          bash compile_openwrt.sh config/${{ inputs.config }}.sh
+          bash compile_openwrt.sh config/${CONFIG}.sh
 
       - name: Package Openwrt Firmware
         run: |
-          if [ ${{ inputs.config }} = "arm64-openwrt.sh" ]; then
+          if [ $CONFIG = "arm64-openwrt.sh" ]; then
             wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
             bash pack_firmware.sh
             mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
