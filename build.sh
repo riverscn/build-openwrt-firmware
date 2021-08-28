@@ -8,9 +8,9 @@ COMPILE_OPENWRT_SCRIPT="compile_openwrt.sh"
 PACK_FIRMWARE_SCRIPT="pack_firmware.sh"
 PACKAGED_OUTPUTPATH="/opt/openwrt_packit/tmp"
 
-(. ${PREPARE_SCRIPT})
-(. ${FETCH_OPENWRT_SCRIPT})
-(. ${COMPILE_OPENWRT_SCRIPT})
+bash ${PREPARE_SCRIPT}
+bash ${FETCH_OPENWRT_SCRIPT}
+bash ${COMPILE_OPENWRT_SCRIPT} $1
 
 if [ "$1" = "arm64-openwrt" ]; then
     # Pack Other SBC Boxes' firmware
