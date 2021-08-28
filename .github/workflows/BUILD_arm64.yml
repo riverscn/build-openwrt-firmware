@@ -32,7 +32,7 @@ jobs:
           df -h
       
       - name: Run Build Script
-        uses: .
+        uses: ./
         with:
           config: ${{ env.CONFIG }}
 
