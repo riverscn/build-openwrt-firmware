@@ -8,5 +8,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: bash ${{ github.action_path }}/build.sh ${{ github.action_path }}/configs/${{ inputs.config }}.sh
+    - run: bash build.sh configs/${{ inputs.config }}.sh
       shell: bash
