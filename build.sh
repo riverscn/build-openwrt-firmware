@@ -10,10 +10,6 @@ PACKAGED_OUTPUTPATH="/opt/openwrt_packit/tmp"
 
 (. ${PREPARE_SCRIPT})
 (. ${FETCH_OPENWRT_SCRIPT})
-
-rm -rf bin/ 2> /dev/null
-mkdir bin
-
 (. ${COMPILE_OPENWRT_SCRIPT})
 
 # Pack Other SBC Boxes' firmware

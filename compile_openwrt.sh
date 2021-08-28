@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+rm -rf bin/ 2> /dev/null
+mkdir bin
+
 for FILE in ./configs/*-openwrt.sh
 do
     (
