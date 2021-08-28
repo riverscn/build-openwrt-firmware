@@ -40,6 +40,6 @@ rename -f 's/immortalwrt/openwrt/' bin/*.*.gz
 rename -f "s/sysupgrade/${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.img.gz
 rename -f "s/combined/combined-${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}/" bin/*.img.gz
 
-rm bin/*rpi*factory.img.gz 2> /dev/null
-rm bin/*rootfs.img.gz 2> /dev/null
-rm bin/*ext4*.img.gz 2> /dev/null
+#rm bin/*rpi*factory.img.gz 2> /dev/null
+#rm bin/*rootfs.img.gz 2> /dev/null
+#rm bin/*ext4*.img.gz 2> /dev/null
