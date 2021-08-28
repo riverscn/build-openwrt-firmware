@@ -47,7 +47,7 @@ jobs:
 
       - name: Compile Openwrt ${{ github.event.client_payload.config || github.event.inputs.config }} packages
         run: |
-          bash compile_openwrt.sh config/${CONFIG}.sh
+          bash compile_openwrt.sh config/$CONFIG.sh
 
       - name: Package Openwrt Firmware
         run: |
@@ -64,7 +64,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: openwrt-firmware-${{ inputs.config }}_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: openwrt-firmware-$CONFIG_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
           body_path: ${{ github.workspace }}/configs/release_note.txt
