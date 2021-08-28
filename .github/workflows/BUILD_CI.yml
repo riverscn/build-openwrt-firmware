@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       config:
-        description: 'Input config script file name without ".sh". "all" to build all the configs.'
+        description: 'Input config script file name without ".sh". "all-openwrt" to build all the configs.'
         required: true
-        default: 'all'
+        default: 'all-openwrt'
       txt:
         description: 'Release note txt file name.'
         required: true
@@ -33,7 +33,7 @@ jobs:
       - name: setenv
         if: github.event.schedule=='0 21 * * 5'
         run: |
-          echo "::set-env name=CONFIG::'all'"
+          echo "::set-env name=CONFIG::'all-opnwrt'"
           echo "::set-env name=TXT::'release_note.txt'"
 
       - name: Checkout
