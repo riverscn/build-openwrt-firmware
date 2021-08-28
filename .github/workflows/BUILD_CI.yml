@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build OpenWrt Firmware
+name: Build OpenWrt Custom Firmware
 
 # Controls when the workflow will run
 on:
@@ -10,8 +10,12 @@ on:
     inputs:
       config:
         description: 'Input config script file name without ".sh". "all" to build all the configs.'
-        required: false
+        required: true
         default: 'all'
+      txt:
+        description: 'Release note txt file name.'
+        required: true
+        default: 'release_note.txt'
 
 env:
   TZ: 'Asia/Shanghai'
@@ -21,6 +25,8 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       CONFIG: ${{ github.event.client_payload.config || github.event.inputs.config }}
+      TXT: ${{ github.event.client_payload.txt || github.event.inputs.txt }}
+      
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -34,30 +40,14 @@ jobs:
           echo "Free space:"
           df -h
       
-      - name: Install Depends
-        run: |
-          bash prepare_env.sh
-          sudo timedatectl set-timezone "$TZ"
-          echo "Free space:"
-          df -h
-      
-      - name: Fetch Openwrt
-        run: |
-          bash fetch_openwrt.sh
+      - name: Run Build Script
+        uses: ./
+        with:
+          config: ${{ env.CONFIG }}
 
-      - name: Compile Openwrt ${{ github.event.client_payload.config || github.event.inputs.config }} packages
+      - name: After Script
         run: |
-          bash compile_openwrt.sh config/${{ env.CONFIG }}.sh
-
-      - name: Package Openwrt Firmware
-        run: |
-          if [ ${{ env.CONFIG }} = "arm64-openwrt.sh" ]; then
-            wget -O openwrt_flippy.sh https://github.com/unifreq/openwrt_packit/raw/master/openwrt_flippy.sh
-            bash pack_firmware.sh
-            mv ${{ env.PACKAGED_OUTPUTPATH }}/*.img.gz bin/
-          else
-            echo "PACKAGED_OUTPUTDATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
-          fi
+          echo "PACKAGED_OUTPUTDATE=$(date +"%Y.%m.%d.%H%M")" >> $GITHUB_ENV
 
       - name: Upload OpenWrt Firmware to Releases
         uses: softprops/action-gh-release@v1
@@ -67,4 +57,4 @@ jobs:
           tag_name: openwrt-firmware-${{ env.CONFIG }}_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
-          body_path: ${{ github.workspace }}/configs/release_note.txt
+          body_path: ${{ github.workspace }}/configs/${{ env.TXT }}

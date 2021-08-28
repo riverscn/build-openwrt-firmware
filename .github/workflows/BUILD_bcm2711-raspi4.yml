@@ -37,7 +37,6 @@ jobs:
         uses: ./
         with:
           config: ${{ env.CONFIG }}
-          TXT: release_note.txt
           
       - name: After Script
         run: |

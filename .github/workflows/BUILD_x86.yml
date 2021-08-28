@@ -18,6 +18,8 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       CONFIG: x86-openwrt
+      TXT: release_note.txt
+      
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -35,7 +37,6 @@ jobs:
         uses: ./
         with:
           config: ${{ env.CONFIG }}
-          TXT: release_note.txt
 
       - name: After Script
         run: |
