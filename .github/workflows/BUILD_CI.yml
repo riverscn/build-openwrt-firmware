@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build OpenWrt Custom Firmware
+name: Build OpenWrt Firmware
 
 # Controls when the workflow will run
 on:
@@ -16,6 +16,8 @@ on:
         description: 'Release note txt file name.'
         required: true
         default: 'release_note.txt'
+  schedule:
+    - cron: '0 21 * * 5'
 
 env:
   TZ: 'Asia/Shanghai'
@@ -28,6 +30,12 @@ jobs:
       TXT: ${{ github.event.client_payload.txt || github.event.inputs.txt }}
       
     steps:
+      - name: setenv
+        if: github.event.schedule=='0 21 * * 5'
+        run: |
+          echo "::set-env name=config::'all'"
+          echo "::set-env name=txt::'release_note.txt'"
+
       - name: Checkout
         uses: actions/checkout@main
 
