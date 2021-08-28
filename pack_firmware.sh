@@ -16,4 +16,6 @@ rm bin/*rpi*factory.img.gz
 rm bin/*rootfs.img.gz
 rm bin/*ext4*.img.gz
 
+ls bin/
+
 source openwrt_flippy.sh
