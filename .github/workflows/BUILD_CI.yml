@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       config:
-        description: 'Config script file name. "all" to build all the configs.'
+        description: 'Input config script file name without ".sh". "all" to build all the configs.'
         required: false
         default: 'all'
 
@@ -46,7 +46,7 @@ jobs:
 
       - name: Compile Openwrt
         run: |
-          bash compile_openwrt.sh config/${{ inputs.config }}
+          bash compile_openwrt.sh config/${{ inputs.config }}.sh
 
       - name: Package Openwrt Firmware
         run: |
@@ -63,7 +63,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: openwrt-firmware_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: openwrt-firmware-${{ inputs.config }}_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
           body_path: ${{ github.workspace }}/configs/release_note.txt
