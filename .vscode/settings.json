@@ -6,6 +6,8 @@
         "**/staging_dir/**": true,
         "**/target/**": true,
         "**/toolchain/**": true,
-        "**/tools/**": true
+        "**/tools/**": true,
+        "**/.ccache/**": true,
+        "**/tmp/**": true
     }
 }
