@@ -56,4 +56,5 @@ Alternatively, you can build openwrt on your own computer. Ubuntu or Debian is s
 
 Be ware: if you use Docker for Windows, [unifreq's script](https://github.com/unifreq/openwrt_packit/blob/master/README.ACTION.md) may not work correctly. You can use a Virtual Machine instead.
 
-Run `./build.sh` and that's all.
+Run `./build.sh` to build all targets.
+Run `./build.sh configs/xxxx-openwrt.sh` to build one target.
