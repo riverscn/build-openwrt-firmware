@@ -13,7 +13,7 @@ Scripts for building openwrt router box firmware.
 * Raspberry Pi 4 Series
 * Phicomm N1
 
-You can [add your own targets](#config-files)
+You can [add your own target config](configs).
 
 # Features
 
