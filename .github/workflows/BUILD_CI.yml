@@ -30,7 +30,7 @@ jobs:
       TXT: ${{ github.event.client_payload.txt || github.event.inputs.txt }}
       
     steps:
-      - name: setenv
+      - name: Set ENV
         if: github.event.schedule=='0 21 * * 5'
         run: |
           echo "::set-env name=CONFIG::'all-openwrt'"
