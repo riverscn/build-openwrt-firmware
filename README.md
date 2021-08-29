@@ -44,12 +44,6 @@ You can [add your own targets](#config-files)
 * luci-app-omcproxy
 * luci-app-sqm
 
-# Config files
-
-* [custom.seed](configs/custom.seed) is used for common `.config` settings. All targets share these settings.
-* [\*-openwrt.sh](configs) is used to define each build target. You can create new files to add more targets.
-* [pack_firmware.sh](pack_firmware.sh) contains ENV variable [PACKAGE_SOC](https://github.com/unifreq/openwrt_packit/blob/master/README.ACTION.md) to determine what targets to build.
-
 # Build your own firmwares
 
 ## Build online
