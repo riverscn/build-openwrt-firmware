@@ -1,9 +1,12 @@
 Firmware information:
-Default IP: 192.168.1.1
-Default username: root
-Default password: password
-Default AP: Openwrt (open)
-N1 AP: Phicomm_N1 (password)
+
+>Default IP: `192.168.1.1`
+>Default username: `root`
+>Default password: `password`
+>Default AP: `Openwrt` (open)
+>N1 AP: `Phicomm_N1` (`password`)
+
+`*_docker.img.gz` contains luci-app-dockerman and docker-compose pacakges.
 
 X86 and Raspberry Pi are able to use build-in sysupgrade.
 

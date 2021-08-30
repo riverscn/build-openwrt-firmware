@@ -34,3 +34,5 @@ CONFIG_PACKAGE_kmod-fs-ntfs=y
 CONFIG_PACKAGE_kmod-nls-cp936=y
 
 EOF
+
+cd ..

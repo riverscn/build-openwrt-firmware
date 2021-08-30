@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       config:
-        description: 'Input config script file name without ".sh". "all-openwrt" to build all the configs.'
+        description: 'Input config script file name without ".sh". "all" to build all the configs.'
         required: true
-        default: 'all-openwrt'
+        default: 'all'
       txt:
         description: 'Release note txt file name.'
         required: true

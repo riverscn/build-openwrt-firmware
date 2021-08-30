@@ -35,8 +35,12 @@ You can [add your own target config](configs).
 * luci-app-upnp
 * luci-theme-argon
 * luci-app-zerotier
-* luci-app-dockerman
 * luci-app-diskman
+
+## Only for "with-docker" image
+
+* luci-app-dockerman
+* docker-compose
 
 ## Only for main router (x86)
 

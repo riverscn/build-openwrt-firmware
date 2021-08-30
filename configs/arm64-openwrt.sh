@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export USE_FLIPPY_KERNEL=1
+
 cd openwrt
 
 packages=" \
@@ -61,3 +63,5 @@ CONFIG_PACKAGE_wpa-cli=y
 CONFIG_PACKAGE_wpad-basic=y
 CONFIG_PACKAGE_iw=y
 EOF
+
+cd ..
