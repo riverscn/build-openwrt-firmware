@@ -16,6 +16,11 @@ else
   CONFIG_SCRIPTS=$1
 fi
 
+if [ ! -f "$FILE" ]; then
+  echo "$FILE does not exist."
+  exit 1
+fi
+
 OPENWRT_VER="immortal21.02"
 
 PACK_FIRMWARE_SCRIPT="pack_firmware.sh"
