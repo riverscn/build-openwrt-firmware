@@ -42,6 +42,8 @@ You can [add your own target config](configs).
 * luci-app-dockerman
 * docker-compose
 
+Docker makes network complex, only for advanced users!
+
 ## Only for main router (x86)
 
 * luci-app-acme
