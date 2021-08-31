@@ -16,8 +16,8 @@ else
   CONFIG_SCRIPTS=$1
 fi
 
-if [ ! -f "$FILE" ]; then
-  echo "$FILE does not exist."
+if [ ! -f "$CONFIG_SCRIPTS" ]; then
+  echo "$CONFIG_SCRIPTS does not exist."
   exit 1
 fi
 
