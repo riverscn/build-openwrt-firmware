@@ -14,11 +14,10 @@ then
   CONFIG_SCRIPTS="./configs/*-openwrt.sh"
 else
   CONFIG_SCRIPTS=$1
-fi
-
-if [ ! -f "$CONFIG_SCRIPTS" ]; then
-  echo "$CONFIG_SCRIPTS does not exist."
-  exit 1
+  if [ ! -f "$CONFIG_SCRIPTS" ]; then
+    echo "$CONFIG_SCRIPTS does not exist."
+    exit 1
+  fi
 fi
 
 OPENWRT_VER="immortal21.02"
