@@ -8,5 +8,5 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: bash build.sh ./configs/${{ inputs.config }}-openwrt.sh
+    - run: bash build.sh ${{ inputs.config }}
       shell: bash
