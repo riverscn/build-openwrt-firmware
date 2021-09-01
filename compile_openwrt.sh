@@ -18,7 +18,7 @@ rm -rf bin/ 2> /dev/null
 mkdir bin
 mkdir bin/tmp
 
-for FILE in "$@"
+for FILE in $@
     do
       if [ ! -f "$FILE" ]; then
         echo "$FILE does not exist."

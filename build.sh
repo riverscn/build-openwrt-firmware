@@ -2,7 +2,7 @@
 
 ## This script is for build openwrt locally on your computer
 
-CONFIG_SCRIPTS=$1
+CONFIG_SCRIPTS=$@
 
 echo Build: ${CONFIG_SCRIPTS}
 
