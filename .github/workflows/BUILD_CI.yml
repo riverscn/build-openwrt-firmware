@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build OpenWrt Firmware
+name: Build OpenWrt Firmware - Normal
 
 # Controls when the workflow will run
 on:
@@ -11,7 +11,7 @@ on:
       config:
         description: 'Input config script file name without ".sh". "all" to build all the configs.'
         required: true
-        default: 'all'
+        default: 'configs/*-openwrt.sh'
       txt:
         description: 'Release note txt file name.'
         required: true
@@ -33,7 +33,7 @@ jobs:
       - name: Set ENV
         if: github.event.schedule=='0 21 * * 5'
         run: |
-          echo "::set-env name=CONFIG::'all-openwrt'"
+          echo "::set-env name=CONFIG::'configs/*-openwrt.sh'"
           echo "::set-env name=TXT::'release_note.txt'"
 
       - name: Checkout
