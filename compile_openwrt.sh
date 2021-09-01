@@ -9,17 +9,6 @@ exit_on_error() {
     fi
 }
 
-if [ "$1" = "" ] || [ "$1" = "all" ]
-then
-  CONFIG_SCRIPTS="./configs/*.sh"
-else
-  CONFIG_SCRIPTS=$1
-  if [ ! -f "$CONFIG_SCRIPTS" ]; then
-    echo "$CONFIG_SCRIPTS does not exist."
-    exit 1
-  fi
-fi
-
 OPENWRT_VER="immortal21.02"
 
 PACK_FIRMWARE_SCRIPT="pack_firmware.sh"
@@ -29,8 +18,12 @@ rm -rf bin/ 2> /dev/null
 mkdir bin
 mkdir bin/tmp
 
-for FILE in ${CONFIG_SCRIPTS}
+for FILE in "$@"
     do
+      if [ ! -f "$FILE" ]; then
+        echo "$FILE does not exist."
+        exit 1
+      fi
       echo "Free space:"
       df -h
       echo "Compiling: ${FILE}"
