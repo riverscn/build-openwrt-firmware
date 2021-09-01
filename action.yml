@@ -2,9 +2,9 @@ name: 'Build Openwrt Firmware'
 description: 'Build openwrt firmware with ease'
 inputs:
   config:  # id of input
-    description: 'Config file name without ".sh". "all" to build all.'
+    description: 'Config file name.'
     required: true
-    default: 'all'
+    default: 'configs/*-openwrt.sh'
 runs:
   using: "composite"
   steps:
