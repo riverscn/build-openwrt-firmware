@@ -15,7 +15,7 @@ on:
       txt:
         description: 'Release note txt file name.'
         required: true
-        default: 'release_note.txt'
+        default: 'release_note_docker.txt'
   schedule:
     - cron: '0 21 * * 5'
 
