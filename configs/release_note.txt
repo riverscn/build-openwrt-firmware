@@ -6,9 +6,6 @@ Firmware information:
 >Default AP: `Openwrt` (open)
 >N1 AP: `Phicomm_N1` (`password`)
 
-`*_docker.img.gz` contains luci-app-dockerman and docker-compose pacakges.
->Docker makes network complex, only for advanced users!
-
 X86 and Raspberry Pi are able to use build-in sysupgrade.
 
 Phicomm N1 install to emmc:
