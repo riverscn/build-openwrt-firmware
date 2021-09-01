@@ -9,9 +9,9 @@ exit_on_error() {
     fi
 }
 
-if [ "$1" = "" ] || [ "$1" = "./configs/all-openwrt.sh" ]
+if [ "$1" = "" ] || [ "$1" = "all" ]
 then
-  CONFIG_SCRIPTS="./configs/*-openwrt.sh"
+  CONFIG_SCRIPTS="./configs/*.sh"
 else
   CONFIG_SCRIPTS=$1
   if [ ! -f "$CONFIG_SCRIPTS" ]; then
