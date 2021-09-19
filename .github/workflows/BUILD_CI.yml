@@ -13,9 +13,9 @@ on:
         required: true
         default: 'configs/*-openwrt.sh'
       txt:
-        description: 'Release note txt file name.'
+        description: Release note txt file name.
         required: true
-        default: 'release_note.txt'
+        default: release_note.txt
   schedule:
     - cron: '0 21 * * 5'
 
