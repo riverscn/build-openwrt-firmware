@@ -13,9 +13,9 @@ on:
         required: true
         default: 'configs/*-with-docker.sh'
       txt:
-        description: 'Release note txt file name.'
+        description: Release note txt file name.
         required: true
-        default: 'release_note_docker.txt'
+        default: release_note_docker.txt
   schedule:
     - cron: '0 21 * * 5'
 
