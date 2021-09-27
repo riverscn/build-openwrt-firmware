@@ -16,8 +16,7 @@ CONFIG_PACKAGE_kmod-usb-net-rtl8150=y
 CONFIG_PACKAGE_kmod-usb-net-rtl8152=y
 
 ## PCIE Ethernet
-# CONFIG_PACKAGE_kmod-r8169 is not set
-CONFIG_PACKAGE_kmod-r8168=y
+CONFIG_PACKAGE_kmod-r8169=y
 
 ## USB Storage
 CONFIG_PACKAGE_kmod-usb-storage=y

@@ -10,6 +10,8 @@ cd openwrt
 cat >>.config <<-EOF
 CONFIG_PACKAGE_docker-compose=y
 CONFIG_PACKAGE_luci-app-dockerman=y
+CONFIG_PACKAGE_luci-app-omcproxy=y
+CONFIG_PACKAGE_luci-app-samba4=y
 EOF
 
 cd ..
