@@ -11,7 +11,7 @@ on:
       config:
         description: 'Input config script file name without ".sh". "all" to build all the configs.'
         required: true
-        default: 'configs/*-with-docker.sh'
+        default: configs/*-with-docker.sh
       txt:
         description: Release note txt file name.
         required: true
@@ -33,7 +33,7 @@ jobs:
       - name: Set ENV
         if: github.event.schedule=='0 21 * * 5'
         run: |
-          echo "CONFIG='configs/*-openwrt.sh'" >> $GITHUB_ENV
+          echo "CONFIG=configs/*-openwrt.sh" >> $GITHUB_ENV
           echo "TXT=release_note_docker.txt" >> $GITHUB_ENV
 
       - name: Checkout
