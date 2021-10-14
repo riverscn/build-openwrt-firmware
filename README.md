@@ -37,6 +37,7 @@ You can [add your own target config](configs).
 * luci-theme-argon
 * luci-app-zerotier
 * luci-app-diskman
+* luci-app-udp2raw
 
 ## Only for "with-docker" image
 
