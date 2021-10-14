@@ -5,10 +5,10 @@ CONFIG_TARGET_ROOTFS_PARTSIZE=512
 
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-passwall=y
-CONFIG_PACKAGE_luci-app-udpxy=y
+# CONFIG_PACKAGE_luci-app-udpxy=y
 CONFIG_PACKAGE_ipv6helper=y
-CONFIG_PACKAGE_luci-app-upnp=y
-CONFIG_PACKAGE_luci-app-zerotier=y
+# CONFIG_PACKAGE_luci-app-upnp=y
+# CONFIG_PACKAGE_luci-app-zerotier=y
 CONFIG_PACKAGE_luci-app-diskman=y
 
 ## scripts
