@@ -8,6 +8,9 @@ CONFIG_TARGET_bcm27xx=y
 CONFIG_TARGET_bcm27xx_bcm2711=y
 CONFIG_TARGET_bcm27xx_bcm2711_DEVICE_rpi-4=y
 
+## Raspberry Pi
+CONFIG_PACKAGE_bcm27xx-userland=y
+
 ## USB Ethernet
 CONFIG_PACKAGE_kmod-usb-net-aqc111=y
 CONFIG_PACKAGE_kmod-usb-net-asix=y
@@ -24,6 +27,7 @@ CONFIG_PACKAGE_kmod-usb-storage-extras=y
 
 ## USB utils
 CONFIG_PACKAGE_usbutils=y
+CONFIG_PACKAGE_kmod-usb-dwc2=y
 
 ## File System
 CONFIG_PACKAGE_fdisk=y
