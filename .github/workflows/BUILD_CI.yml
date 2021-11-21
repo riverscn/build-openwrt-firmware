@@ -11,7 +11,7 @@ on:
       config:
         description: 'Input config script file name without ".sh". "all" to build all the configs.'
         required: true
-        default: 'configs/*-openwrt.sh'
+        default: 'configs/*4-openwrt.sh'
       txt:
         description: Release note txt file name.
         required: true
@@ -66,3 +66,4 @@ jobs:
           files: |
             ${{ github.workspace }}/bin/*.img.gz
           body_path: ${{ github.workspace }}/configs/${{ env.TXT }}
+          fail_on_unmatched_files: true
