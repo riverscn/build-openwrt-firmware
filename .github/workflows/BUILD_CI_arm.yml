@@ -15,7 +15,7 @@ on:
       txt:
         description: Release note txt file name.
         required: true
-        default: release_note.txt
+        default: release_note_docker.txt
   schedule:
     - cron: '0 21 * * 5'
 
@@ -34,7 +34,7 @@ jobs:
         if: github.event.schedule=='0 21 * * 5'
         run: |
           echo "CONFIG='configs/*4*.sh'" >> $GITHUB_ENV
-          echo "TXT=release_note.txt" >> $GITHUB_ENV
+          echo "TXT=release_note_docker.txt" >> $GITHUB_ENV
 
       - name: Checkout
         uses: actions/checkout@main
