@@ -11,7 +11,7 @@ on:
       config:
         description: 'Input config script file name without ".sh". "all" to build all the configs.'
         required: true
-        default: configs/*-with-docker.sh
+        default: configs/x86-*.sh
       txt:
         description: Release note txt file name.
         required: true
@@ -33,7 +33,7 @@ jobs:
       - name: Set ENV
         if: github.event.schedule=='0 21 * * 5'
         run: |
-          echo "CONFIG=configs/*-with-docker.sh" >> $GITHUB_ENV
+          echo "CONFIG=configs/x86-*.sh" >> $GITHUB_ENV
           echo "TXT=release_note_docker.txt" >> $GITHUB_ENV
 
       - name: Checkout
@@ -62,7 +62,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: firmware-openwrt-with-docker_${{ env.PACKAGED_OUTPUTDATE }}
+          tag_name: firmware-openwrt-x86_${{ env.PACKAGED_OUTPUTDATE }}
           files: |
             ${{ github.workspace }}/bin/*.img.gz
           body_path: ${{ github.workspace }}/configs/${{ env.TXT }}
+          fail_on_unmatched_files: true
