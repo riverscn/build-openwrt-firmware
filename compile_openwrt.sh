@@ -35,7 +35,7 @@ for FILE in $@
       make download -j8
       make -j$(nproc) || make -j1 V=s
       mv bin/targets/*/*/*.*.gz ../bin/tmp
-      if [ "$(df --output=avail -h $(pwd) | sed '1d;s/[^0-9]//g')" -lt "20" ]; then make dirclean; fi
+      # if [ "$(df --output=avail -h $(pwd) | sed '1d;s/[^0-9]//g')" -lt "20" ]; then make dirclean; fi
       cd ..
       rename -f "s/immortalwrt/openwrt/" bin/tmp/*.*.gz
       rm bin/tmp/*rpi*factory.img.gz 2> /dev/null
