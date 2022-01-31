@@ -18,6 +18,9 @@ CONFIG_PACKAGE_ddns-scripts-cloudflare=y
 ## luci theme
 CONFIG_PACKAGE_luci-theme-argon=y
 
+## VPN
+CONFIG_PACKAGE_kmod-tun=y
+
 ## remove
 # CONFIG_PACKAGE_luci-app-webadmin is not set
 # CONFIG_PACKAGE_luci-app-vlmcsd is not set
