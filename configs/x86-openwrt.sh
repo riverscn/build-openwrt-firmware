@@ -33,9 +33,6 @@ CONFIG_PACKAGE_kmod-fs-ntfs=y
 ## Language
 CONFIG_PACKAGE_kmod-nls-cp936=y
 
-## VPN
-CONFIG_PACKAGE_kmod-tun=y
-
 EOF
 
 cd ..
