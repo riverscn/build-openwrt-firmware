@@ -11,3 +11,4 @@ sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binu
   xxd zlib1g-dev
 sudo -E apt-get -qq install btrfs-progs dosfstools uuid-runtime mount util-linux parted rename
 sudo -E apt-get -qq install genisoimage
+sudo -E apt-get -qq install libncurses5-dev zlib1g-dev gawk
