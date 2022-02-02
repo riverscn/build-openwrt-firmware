@@ -2,15 +2,16 @@
 ## https://github.com/klever1988/nanopi-openwrt/blob/master/luci_app_manual.md
 
 CONFIG_TARGET_ROOTFS_PARTSIZE=512
+CONFIG_GRUB_TIMEOUT="0"
 
 CONFIG_PACKAGE_luci-app-argon-config=y
 CONFIG_PACKAGE_luci-app-passwall=y
 CONFIG_PACKAGE_luci-app-udpxy=y
 CONFIG_PACKAGE_ipv6helper=y
 CONFIG_PACKAGE_luci-app-upnp=y
-CONFIG_PACKAGE_luci-app-zerotier=y
 CONFIG_PACKAGE_luci-app-diskman=y
-CONFIG_PACKAGE_luci-app-udp2raw=y
+CONFIG_PACKAGE_luci-app-ddns=y
+CONFIG_PACKAGE_bind-host=y
 
 ## scripts
 CONFIG_PACKAGE_ddns-scripts-cloudflare=y
@@ -19,7 +20,7 @@ CONFIG_PACKAGE_ddns-scripts-cloudflare=y
 CONFIG_PACKAGE_luci-theme-argon=y
 
 ## VPN
-CONFIG_PACKAGE_kmod-tun=y
+CONFIG_PACKAGE_tailscale=y
 
 ## remove
 # CONFIG_PACKAGE_luci-app-webadmin is not set
