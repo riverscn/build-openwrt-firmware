@@ -28,6 +28,7 @@ CONFIG_PACKAGE_kmod-usb-storage-extras=y
 ## USB utils
 CONFIG_PACKAGE_usbutils=y
 CONFIG_PACKAGE_kmod-usb-dwc2=y
+CONFIG_PACKAGE_kmod-usb2=y
 
 ## File System
 CONFIG_PACKAGE_fdisk=y
