@@ -9,7 +9,7 @@ exit_on_error() {
     fi
 }
 
-OPENWRT_VER="immortal_SNAPSHOT"
+OPENWRT_VER="immortal21.02_SNAPSHOT"
 
 PACK_FIRMWARE_SCRIPT="pack_firmware.sh"
 PACKAGED_OUTPUTPATH="/opt/openwrt_packit/tmp"
