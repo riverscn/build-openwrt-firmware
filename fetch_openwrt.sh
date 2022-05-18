@@ -1,6 +1,6 @@
 #!/bin/bash
 
-(git clone -b master --single-branch https://github.com/immortalwrt/immortalwrt openwrt) || (cd openwrt && git stash && git pull)
+(git clone https://github.com/immortalwrt/immortalwrt openwrt) || (cd openwrt && git stash && git pull)
 
 cd openwrt
 
