@@ -49,6 +49,6 @@ for FILE in $@
         KERNEL_VERSION_ORIG="$(awk '/kernel/ {print $3}' $(pwd)/openwrt/bin/targets/*/*/*.manifest | awk -F '-' '{print $1}' | awk 'NR==1')"
         rename -f "s/.img.gz/-${OPENWRT_VER}_k${KERNEL_VERSION_ORIG}${CONFIG_NAME}.img.gz/" bin/tmp/*.img.gz
       fi
-      mv bin/tmp/*squashfs-combined*.img.gz bin/
+      mv bin/tmp/*squashfs*.img.gz bin/
     done
 rm bin/tmp/ -r
