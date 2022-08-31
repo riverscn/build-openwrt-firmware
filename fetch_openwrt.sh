@@ -4,7 +4,8 @@
 
 cd openwrt
 
-(git clone https://github.com/xiaorouji/openwrt-passwall2 package/emortal/openwrt-passwall2) || (cd package/emortal/openwrt-passwall2 && git stash && git pull && cd ../.. )
+echo "src-git xiaorouji https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
+echo "src-git xiaorouji2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> feeds.conf.default
 
 ./scripts/feeds update -a
 ./scripts/feeds install -a
