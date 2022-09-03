@@ -1,6 +1,9 @@
 # Build Openwrt firmware with ease
 Scripts for building openwrt router box firmware.
 
+[![Build OpenWrt Firmware - Raspi](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_CI_raspi.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_CI_raspi.yml)
+[![Build OpenWrt Firmware - X86](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_CI_x86.yml/badge.svg)](https://github.com/riverscn/build-openwrt-firmware/actions/workflows/BUILD_CI_x86.yml)
+
 [下载最新固件](https://github.com/riverscn/build-openwrt-firmware/releases)
 
 [使用方法及相关测试](https://blog.lishun.me/openwrt-mega-post)
