@@ -12,7 +12,6 @@ Scripts for building openwrt router box firmware.
 
 * X86
 * Raspberry Pi 4 Series
-* Phicomm N1
 
 You can [add your own target config](configs).
 
@@ -65,8 +64,6 @@ Docker makes network complex, only for advanced users!
 Alternatively, you can build openwrt on your own computer.
 
 Ubuntu or Debian is supported.
-
-Be ware: if you use Docker for Windows, [unifreq's script](https://github.com/unifreq/openwrt_packit/blob/master/README.ACTION.md) may not work correctly. You can use a Virtual Machine instead.
 
 Run `./build.sh configs/*.sh` to build all targets.
 
