@@ -22,7 +22,7 @@ CONFIG_PACKAGE_kmod-shortcut-fe=y
 CONFIG_PACKAGE_ddns-scripts-cloudflare=y
 
 ## VPN
-CONFIG_PACKAGE_tailscale=y
+# CONFIG_PACKAGE_tailscale=y
 
 ## remove
 # CONFIG_PACKAGE_luci-app-webadmin is not set
