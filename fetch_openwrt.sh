@@ -1,6 +1,6 @@
 #!/bin/bash
 
-(git clone https://github.com/immortalwrt/immortalwrt openwrt) || (cd openwrt && git stash && git pull)
+(git clone -b v21.02.2 https://github.com/immortalwrt/immortalwrt openwrt) || (cd openwrt && git stash && git pull)
 
 cd openwrt
 
